@@ -1,6 +1,6 @@
 import { all, takeEvery, put, call } from 'redux-saga/effects';
 import actions from './actions';
-import { createGameSession } from '../../services/axios/game';
+import { createGameSession, guessWord } from '../../services/axios/game';
 
 export function* START_GAME({ email }) {
   yield put({
@@ -21,7 +21,7 @@ export function* START_GAME({ email }) {
   });
 }
 
-export function* ATTEMPT({ email }) {
+export function* ATTEMPT({ email, character }) {
   yield put({
     type: 'game/SET_STATE',
     payload: {
@@ -29,7 +29,7 @@ export function* ATTEMPT({ email }) {
     },
   });
 
-  const game = yield call(createGameSession, { email }) || {};
+  const game = yield call(guessWord, { email, character }) || {};
 
   yield put({
     type: 'game/SET_STATE',

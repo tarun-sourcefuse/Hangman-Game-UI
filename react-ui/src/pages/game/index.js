@@ -20,13 +20,25 @@ function Game({ email, loading, dispatch, game }) {
     if (email) dispatch({ type: 'game/START_GAME', email });
   }, [email]);
 
-  console.log(game, game?.guessWords?.includes('y'));
+  useEffect(() => {
+    if (game && game.gameOver) {
+      alert(game.msg);
+    }
+  }, [game]);
 
+  const guessWord = (character) => {
+    dispatch({ type: 'game/ATTEMPT', character, email });
+  };
+
+  console.log(' >>> ', loading);
   if (loading) return <div>Loading ... </div>;
   return (
     <div>
       <div className="game-title">
         <h1>{game?.word}</h1>
+      </div>
+      <div className="game-hint">
+        <h2>Hint: {game?.hint}</h2>
       </div>
       <div className="game-answer">
         <h2>Attempts left: {game?.attempts}</h2>
@@ -37,7 +49,12 @@ function Game({ email, loading, dispatch, game }) {
             <div key={idx} className="keyboard">
               {row.map((key) => {
                 return (
-                  <Button disabled={game?.guessWords?.includes(key) && true} className="keyboard-key" key={key}>
+                  <Button
+                    onClick={() => guessWord(key)}
+                    disabled={game?.guessWords?.includes(key) && true}
+                    className="keyboard-key"
+                    key={key}
+                  >
                     {key}
                   </Button>
                 );
