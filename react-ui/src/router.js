@@ -11,6 +11,11 @@ const routes = [
     Component: lazy(() => import('./pages/login')),
     exact: true,
   },
+  {
+    path: '/game',
+    Component: lazy(() => import('./pages/game')),
+    exact: true,
+  },
 ];
 
 const mapStateToProps = ({ user }) => user;
