@@ -10,6 +10,20 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
+.spinner {
+  position: fixed !important;
+  top: 10em;
+  margin-left: 10px !important;
+  margin-top: 10px !important;
+  height: 50px;
+  left: 50%;
+  z-index: 200;
+}
+
+.result {
+  color: red;
+}
+
 .center-div {
   align-items: center;
   position: fixed;
@@ -24,38 +38,9 @@ code {
   justify-content: space-evenly;
 }
 
-.game-title {
+.game-content {
   align-items: center;
   position: fixed;
-  top: 25%;
-  left: 50%;
-  width: 30em;
-  height: 18em;
-  margin-top: -9em;
-  display: flex;
-  margin-left: -15em;
-  flex-direction: column;
-  justify-content: space-evenly;
-}
-
-.game-hint {
-  align-items: center;
-  position: fixed;
-  top: 30%;
-  left: 50%;
-  width: 30em;
-  height: 18em;
-  margin-top: -9em;
-  display: flex;
-  margin-left: -15em;
-  flex-direction: column;
-  justify-content: space-evenly;
-}
-
-.game-answer {
-  align-items: center;
-  position: fixed;
-  top: 35%;
   left: 50%;
   width: 30em;
   height: 18em;

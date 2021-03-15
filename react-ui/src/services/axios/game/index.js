@@ -1,4 +1,7 @@
+import React from 'react';
 import apiClient from '../apiClient';
+import { notification } from 'antd';
+import { CloseOutlined } from '@ant-design/icons';
 
 export async function createGameSession({ email }) {
   return apiClient
@@ -18,6 +21,11 @@ export async function createGameSession({ email }) {
     })
     .catch((err) => {
       console.error(err);
+      notification.open({
+        message: 'Something Bad Happens',
+        description: 'Please try again later',
+        icon: <CloseOutlined style={{ color: '#108ee9' }} />,
+      });
     });
 }
 
@@ -39,5 +47,10 @@ export async function guessWord({ email, character }) {
     })
     .catch((err) => {
       console.error(err);
+      notification.open({
+        message: 'Something Bad Happens',
+        description: 'Please try again later',
+        icon: <CloseOutlined style={{ color: '#108ee9' }} />,
+      });
     });
 }

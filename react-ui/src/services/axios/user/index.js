@@ -1,4 +1,7 @@
+import React from 'react';
 import apiClient from '../apiClient';
+import { notification } from 'antd';
+import { CloseOutlined } from '@ant-design/icons';
 
 export async function login({ email }) {
   return apiClient
@@ -17,7 +20,11 @@ export async function login({ email }) {
       return user;
     })
     .catch((err) => {
-      alert('Invalid Email');
-      console.error(err);
+      console.log(err);
+      notification.open({
+        message: 'Something Bad Happens',
+        description: 'Please try again later',
+        icon: <CloseOutlined style={{ color: '#108ee9' }} />,
+      });
     });
 }

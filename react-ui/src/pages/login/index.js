@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { Input } from 'antd';
 import { Button } from 'antd';
+import Loader from '../../components/Loader';
 import 'antd/dist/antd.css';
 
 const mapStateToProps = ({ user: { loading, email } }) => ({
@@ -19,11 +20,10 @@ function Login({ loading, email, dispatch }) {
   }, [email]);
 
   const login = () => {
-    console.log(userEmail);
     dispatch({ type: 'user/LOGIN', email: userEmail });
   };
 
-  if (loading) return <div>Loading ... </div>;
+  if (loading) return <Loader />;
 
   return (
     <div className="center-div">
