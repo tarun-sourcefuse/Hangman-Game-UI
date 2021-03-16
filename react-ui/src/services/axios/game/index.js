@@ -5,7 +5,7 @@ import { CloseOutlined } from '@ant-design/icons';
 
 export async function createGameSession({ email }) {
   return apiClient
-    .get(`/startGame?email=${email}`)
+    .get(`/start-game?email=${email}`)
     .then((response) => {
       if (!response) {
         throw new Error('No response');
@@ -31,7 +31,7 @@ export async function createGameSession({ email }) {
 
 export async function guessWord({ email, character }) {
   return apiClient
-    .get(`/guessWord?email=${email}&character=${character}`)
+    .get(`/guess-word?email=${email}&character=${character}`)
     .then((response) => {
       if (!response) {
         throw new Error('No response');

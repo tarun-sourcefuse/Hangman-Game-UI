@@ -5,7 +5,7 @@ function Hangman({ attempts = 6 }) {
   return (
     <div className="game-content" style={{ top: '10%' }}>
       <svg
-        height="250"
+        height="200"
         width="200"
         style={{
           fill: 'transparent',

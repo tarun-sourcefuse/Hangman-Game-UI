@@ -26,7 +26,7 @@ function Login({ loading, email, dispatch }) {
 
   return (
     <Form form={form} layout="inline" onFinish={checkLogin} className="login-form">
-      <div className="center-div">
+      <div className="center-div-login">
         <div>
           <Form.Item
             name="userEmail"

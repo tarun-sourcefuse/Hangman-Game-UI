@@ -16,6 +16,7 @@ export function* START_GAME({ email }) {
     type: 'game/SET_STATE',
     payload: {
       loading: false,
+      gameOver: false,
       ...game,
     },
   });

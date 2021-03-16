@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { Button } from 'antd';
 import { H1, H2 } from '../../components/Content';
 import Keyboard from '../../components/VirtualKeyboard';
 import Loader from '../../components/Loader';
@@ -19,19 +19,15 @@ const contentStyles = {
 };
 
 function Game({ email, dispatch, game }) {
-  const history = useHistory();
-
   useEffect(() => {
     if (email) {
-      dispatch({ type: 'game/START_GAME', email });
+      startGame();
     }
   }, [email]);
 
-  useEffect(() => {
-    if (game && game.gameOver) {
-      history.push('/result');
-    }
-  }, [game]);
+  const startGame = () => {
+    dispatch({ type: 'game/START_GAME', email });
+  };
 
   const guessWord = (character) => {
     dispatch({ type: 'game/ATTEMPT', character, email });
@@ -43,8 +39,19 @@ function Game({ email, dispatch, game }) {
     <div>
       <Hangman attempts={game?.attempts} />
       <H1 style={contentStyles.title}>{game?.word}</H1>
-      <H2 style={contentStyles.hint}>Hint: {game?.hint}</H2>
-      <H2 style={contentStyles.attempts}>Attempts left: {game?.attempts}</H2>
+      {game.gameOver ? (
+        <div>
+          <H2 style={contentStyles.hint}>{game?.msg}</H2>
+          <div className="game-content" style={contentStyles.attempts}>
+            <Button onClick={startGame}>Start Again</Button>
+          </div>
+        </div>
+      ) : (
+        <div>
+          <H2 style={contentStyles.hint}>Hint: {game?.hint}</H2>
+          <H2 style={contentStyles.attempts}>Attempts left: {game?.attempts}</H2>
+        </div>
+      )}
       <Keyboard className="center-div" guessWord={guessWord} guessWords={game?.guessWords} />
     </div>
   );
