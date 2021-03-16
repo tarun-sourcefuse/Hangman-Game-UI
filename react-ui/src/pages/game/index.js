@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { H1, H2 } from '../../components/Content';
 import Keyboard from '../../components/VirtualKeyboard';
 import Loader from '../../components/Loader';
+import Hangman from '../../components/Hangman';
 
 const mapStateToProps = ({ user: { loading, email }, game }) => ({
   email,
@@ -12,9 +13,9 @@ const mapStateToProps = ({ user: { loading, email }, game }) => ({
 });
 
 const contentStyles = {
-  title: { top: '25%' },
-  hint: { top: '30%' },
-  attempts: { top: '35%' },
+  title: { top: '30%' },
+  hint: { top: '40%' },
+  attempts: { top: '50%' },
 };
 
 function Game({ email, dispatch, game }) {
@@ -40,6 +41,7 @@ function Game({ email, dispatch, game }) {
 
   return (
     <div>
+      <Hangman attempts={game?.attempts} />
       <H1 style={contentStyles.title}>{game?.word}</H1>
       <H2 style={contentStyles.hint}>Hint: {game?.hint}</H2>
       <H2 style={contentStyles.attempts}>Attempts left: {game?.attempts}</H2>

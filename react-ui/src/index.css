@@ -24,10 +24,24 @@ code {
   color: red;
 }
 
-.center-div {
+.center-div-login {
   align-items: center;
   position: fixed;
   top: 50%;
+  left: 50%;
+  width: 30em;
+  height: 18em;
+  margin-top: -9em;
+  display: flex;
+  margin-left: -15em;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.center-div {
+  align-items: center;
+  position: fixed;
+  top: 70%;
   left: 50%;
   width: 30em;
   height: 18em;
