@@ -43,7 +43,9 @@ function Game({ email, dispatch, game }) {
         <div>
           <H2 style={contentStyles.hint}>{game?.msg}</H2>
           <div className="game-content" style={contentStyles.attempts}>
-            <Button onClick={startGame}>Start Again</Button>
+            <Button type="primary" onClick={startGame}>
+              Start Again
+            </Button>
           </div>
         </div>
       ) : (
