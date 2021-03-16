@@ -23,12 +23,12 @@ export function* START_GAME({ email }) {
 }
 
 export function* ATTEMPT({ email, character }) {
-  yield put({
-    type: 'game/SET_STATE',
-    payload: {
-      loading: true,
-    },
-  });
+  // yield put({
+  //   type: 'game/SET_STATE',
+  //   payload: {
+  //     loading: true,
+  //   },
+  // });
 
   const game = yield call(guessWord, { email, character }) || {};
 
